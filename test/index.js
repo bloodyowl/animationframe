@@ -3,7 +3,7 @@ var tape = require("tape")
 
 tape("animationFrame", function(test){
 
-  test.plan(2)
+  test.plan(3)
 
   var ref = 0
     , id
