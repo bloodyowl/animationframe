@@ -23,6 +23,10 @@ var animationFrame = {}
       }
 
 module.exports = {
-  requestAnimationFrame : requestAnimationFrame,
-  cancelAnimationFrame : cancelAnimationFrame
+  requestAnimationFrame : function(){
+    return requestAnimationFrame.apply(window, arguments)
+  },
+  cancelAnimationFrame : function(){
+    return cancelAnimationFrame.apply(window, arguments)
+  },
 }
