@@ -1,13 +1,13 @@
 var tape = require("tape")
-  , animationFrame = require("../")
+var animationFrame = require("../")
 
 tape("animationFrame", function(test){
 
   test.plan(3)
 
   var ref = 0
-    , id
-
+  var id
+  test.equal(animationFrame.requestAnimationFrame, animationFrame.next, "next is an alias")
   id = animationFrame.requestAnimationFrame(function(){
     test.equal(ref, 1, "is asynchrounous (1)")
     animationFrame.requestAnimationFrame(function(){

@@ -1,6 +1,5 @@
-var animationFrame = {}
-  , win = window
-  , requestAnimationFrame =
+var win = window
+var requestAnimationFrame =
       win.requestAnimationFrame ||
       win.webkitRequestAnimationFrame ||
       win.mozRequestAnimationFrame ||
@@ -11,7 +10,7 @@ var animationFrame = {}
           callback()
         }, 1000 / 60)
       }
-  , cancelAnimationFrame =
+var cancelAnimationFrame =
       win.cancelAnimationFrame ||
       win.webkitCancelAnimationFrame ||
       win.webkitCancelRequestAnimationFrame ||
@@ -22,11 +21,16 @@ var animationFrame = {}
         clearTimeout(id)
       }
 
+function raf(){
+  return requestAnimationFrame.apply(window, arguments)
+}
+
+function caf(){
+  return cancelAnimationFrame.apply(window, arguments)
+}
+
 module.exports = {
-  requestAnimationFrame : function(){
-    return requestAnimationFrame.apply(window, arguments)
-  },
-  cancelAnimationFrame : function(){
-    return cancelAnimationFrame.apply(window, arguments)
-  },
+  next : raf,
+  requestAnimationFrame : raf,
+  cancelAnimationFrame : caf
 }
